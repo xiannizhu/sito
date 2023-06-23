@@ -1,0 +1,694 @@
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: theme("borderColor.DEFAULT", currentColor); /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: "";
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+*/
+html {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: theme("fontFamily.sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"); /* 4 */
+  font-feature-settings: theme("fontFamily.sans[1].fontFeatureSettings", normal); /* 5 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+code,
+kbd,
+samp,
+pre {
+  font-family: theme("fontFamily.mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace); /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: theme("colors.gray.400", #9ca3af); /* 2 */
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: theme("colors.gray.400", #9ca3af); /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+button,
+[role=button] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+img,
+video {
+  width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden] {
+  display: none;
+}
+
+@font-face {
+  font-family: "Expose-Variable";
+  src: url("../fonts/Expose-Variable.woff2") format("woff2"), url("../fonts/Expose-Variable.woff") format("woff"), url("../fonts/Expose-Variable.ttf") format("truetype");
+  font-weight: 400 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Expose-Regular";
+  src: url("../fonts/Expose-Regular.woff2") format("woff2"), url("../fonts/Expose-Regular.woff") format("woff"), url("../fonts/Expose-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Expose-Medium";
+  src: url("../fonts/Expose-Medium.woff2") format("woff2"), url("../fonts/Expose-Medium.woff") format("woff"), url("../fonts/Expose-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Expose-Bold";
+  src: url("../fonts/Expose-Bold.woff2") format("woff2"), url("../fonts/Expose-Bold.woff") format("woff"), url("../fonts/Expose-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Expose-Black";
+  src: url("../fonts/Expose-Black.woff2") format("woff2"), url("../fonts/Expose-Black.woff") format("woff"), url("../fonts/Expose-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+body {
+  background-color: #b76189;
+  font-family: "Expose-Variable", "Expose-Regular", "Expose-Medium", "Expose-Bold", "Expose-Black";
+}
+body section,
+body footer {
+  padding: 20px;
+}
+
+#intro,
+svg {
+  width: 100%;
+  height: 100vh;
+}
+
+#intro {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  z-index: 1001;
+  background-color: rebeccapurple;
+}
+
+.bio {
+  margin: 40px;
+  font-family: "Expose-Medium";
+  font-size: 24px;
+}
+
+nav {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  color: #b76189;
+  background-color: #e7e5dd;
+  z-index: 1000;
+}
+
+.left-items {
+  display: flex;
+  gap: 2rem;
+}
+
+.right-items {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+ul {
+  display: flex;
+  gap: 2rem;
+}
+
+.profile {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  margin-top: 150px;
+}
+
+.right {
+  font-size: 76px;
+  font-family: "Expose-Bold";
+  text-align: right;
+  color: #e7e5dd;
+}
+
+.color {
+  color: #780D66;
+}
+
+.left {
+  font-size: 76px;
+  text-align: left;
+  color: #780D66;
+}
+
+.draggable {
+  position: absolute;
+  cursor: move;
+  font-size: 46px;
+  padding: 20px;
+  border: 7px solid black;
+}
+.draggable button {
+  border: none;
+  padding: 10px;
+  border-radius: 40px;
+}
+
+.but1 {
+  background-color: #FFA0C8;
+  padding: 10px;
+  border-radius: 40px;
+  left: 150px;
+  top: 100px;
+  font-family: "Expose-Bold";
+}
+
+.but2 {
+  background-color: #7FFFDC;
+  padding: 10px;
+  border-radius: 40px;
+  left: 240px;
+  top: 210px;
+  font-family: "Expose-Medium";
+}
+
+.but3 {
+  background-color: #FF6743;
+  padding: 10px;
+  border-radius: 40px;
+  left: 50px;
+  top: 300px;
+  font-family: "Expose-Bold";
+}
+
+.but4 {
+  background-color: #D493FF;
+  padding: 10px;
+  border-radius: 40px;
+  left: 350px;
+  top: 350px;
+  font-family: "Expose-Black";
+}
+
+.but5 {
+  background-color: #FFBB4D;
+  padding: 10px;
+  border-radius: 40px;
+  left: 450px;
+  top: 450px;
+}
+
+.but6 {
+  background-color: #6AAAFF;
+  padding: 10px;
+  border-radius: 40px;
+  left: 450px;
+  top: 150px;
+  font-family: "Expose-Black";
+}
+
+.but7 {
+  background-color: #5AC64C;
+  padding: 10px;
+  border-radius: 40px;
+  left: 100px;
+  top: 450px;
+  font-family: "Expose-Black";
+}
+
+.but8 {
+  background-color: #E86898;
+  padding: 10px;
+  border-radius: 40px;
+  left: 600px;
+  top: 300px;
+}
+
+.container1 {
+  background-color: #FF6743;
+  padding: 10px;
+  border-radius: 40px;
+  display: inline;
+  border: 7px solid black;
+}
+
+.container2 {
+  background-color: #6AAAFF;
+  padding: 10px;
+  border-radius: 40px;
+  display: inline;
+  border: 7px solid black;
+  font-family: "Expose-Bold";
+}
+
+.container3 {
+  background-color: #FFBB4D;
+  color: #e7e5dd;
+  font-family: "Expose-Bold";
+  padding: 10px;
+  border-radius: 40px;
+  display: inline;
+  border: 7px solid black;
+}
+
+.slide {
+  position: relative;
+  bottom: 10.5rem;
+  right: 2.5rem;
+  color: rgb(255, 255, 255);
+  font-family: "Expose-Bold";
+  z-index: 2;
+}
+
+.icon {
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon img {
+  height: auto;
+  width: 300px;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}
+
+.email-button {
+  margin: 20px;
+  background-color: #FFA0C8;
+  border: none;
+  color: black;
+  font-family: "Expose-Black";
+  border: 7px solid black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 54px;
+  border-radius: 40px;
+}
+
+.button-social {
+  border: 5px solid black;
+  color: #e7e5dd;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
+  margin-right: 2rem;
+}
+.button-social p {
+  padding: 0.5rem;
+  font-family: "Expose-Bold";
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.button-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 390px) {
+  nav {
+    height: auto;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  .bio {
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+  }
+  .draggable {
+    display: none;
+  }
+  h3 {
+    font-size: 32px;
+  }
+  .right {
+    text-align: right;
+  }
+  .left {
+    text-align: left;
+    font-size: 54px;
+  }
+  .parent {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .icon {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .icon img {
+    width: 100px;
+    height: 100px;
+  }
+  footer {
+    text-align: right;
+  }
+  .button-container {
+    flex-direction: column;
+  }
+  .button-social {
+    margin-right: 0;
+  }
+}/*# sourceMappingURL=style.css.map */
