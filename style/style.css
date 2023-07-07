@@ -439,10 +439,9 @@ ul {
 }
 
 .profile {
-  width: 100%;
-  height: auto;
+  width: 500px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 150px;
 }
 
